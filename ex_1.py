@@ -5,7 +5,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-datas = np.loadtxt("C:/Users/hmtga/Documents/machine_learning/ex1data1.txt", dtype=np.float32, delimiter=',')
+datas = np.loadtxt("ex1data1.txt", dtype=np.float32, delimiter=',')
 
 population = datas[:,0]
 profit = datas[:,1]

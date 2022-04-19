@@ -101,6 +101,26 @@ j从0到n，共n个特征
 h_theta^(i)(x)表示每一个i分类，y = i的可能性<br>
 goal: input x, pick the class i that maximizes h_theta^(i)(x)<br>
 
+## 6-1 过拟合问题
+**欠拟合underfit**是指先入为主判断指标和结果的关系导致拟合效果较差<br>
+**过拟合overfitting**是指虽然现有数据拟合较好，但曲线波动性较大，具有较大的方差，由于feature太多导致的，这将会无法运用到预测样本值当中。<br>
+减少特征数量或使用正则化<br>
+
+## 6-2 代价函数
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\regularization_cost.jpg)    
+lamda为正则化参数，regularization parameter，作用是改变各参数占比，lamda只加在1~……的项中，而不加在theta_0项上。<br>
+
+## 6-3 线性回归的正则化
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\regularization_gradient.jpg)     
+直观上理解，相当于theta_j乘上了一个略小于1的数，再减去原来的梯度下降项。<br>
+若使用正规方程，则形式如下：     
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\normal_regularization.jpg)      
+这里需要注意，lamda后面的矩阵shape为(n+1)*(n+1)，对角线除(0, 0)点为0外，其余都为1。<br>
+
+## 6-4 Logistic回归的正则化
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\regularization_logistic.jpg)      
+
+
 
 
 

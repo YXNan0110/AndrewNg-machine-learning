@@ -120,6 +120,53 @@ lamda为正则化参数，regularization parameter，作用是改变各参数占
 ## 6-4 Logistic回归的正则化
 ![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\regularization_logistic.jpg)      
 
+## 7-1 模型展示
+neuron model：![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\neuron_model_logistic.jpg)       
+x表示input，经过neuron model 得到output，h_theta(x)在这里是激活函数activation function，theta又被称为权重weight。<br>
+neural network: ![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\neutral_network.jpg)      
+x所在层为input输入层，a所在层为hidden隐藏层，隐藏层可以有多个，layer3为output输出层
+a_i^(j)表示第j层第i个神经元的激活项，theta^(j)表示第j层到第j+1层的映射权重。
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\neural_network_explanation.jpg)      
+theta矩阵的大小为s_(j+1) * (s_j + 1)，s_j是第j层的shape，theta的上标表示第j层layer，下标第一个和a对应，第二个和x对应。<br>
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\neural_network_calculate.jpg)       
+这里，`theta_10^(1)*x0 + theta_11^(1)*x1 + theta_12^(1)*x2 + theta_13^(1)*x3 = z_1(2)`，因此，a_1^(2)可以简化为g(z_1^(2))。<br>
+由此，a^(2)的矩阵就简化为了g(z^(2))；而`z^(2) = theta^(1) * X`，X是layer1，所以`z^(2) = theta^(1) * a^(1)`<br>
+a_0(j)这一项均为1，这样就可以很自然的递推出output项<br>
+## 7-2 多分类问题
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\multiple_output.jpg)       
+由于有四个输出，则令四个输出分别为h_theta^(x)，为1位置不同的四个数组，training set为m个(x^(i), y^(i))，x^(i)为输入图片，y^(i)则为所属类别。<br>
+
+## 8-1 代价函数
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\neural_network_cost.jpg)      
+y_k^(i)是所属类别的数组，与上一张图中y^(i)相同，k表示输出项。<br>
+
+## 8-2 反向传播算法
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\back_calculation.jpg)     
+delta_j^(l)表示第l层第j个节点的误差，`delta_j^(4) = a_j^(4) - y_j`，这里a_j^(4)也可以写成输出h_theta(x)_j<br>
+同理，`delta^(3) = np.multiply(theta^(3).T * delta^(4), a^(3), (1 - a^(3)))`, `delta^(2) = np.multiply(theta^(2).T * delta^(3), a^(2), (1 - a^(2)))`, 没有delta^(1)层。<br>
+`dJ(theta)/dtheta_ij^(l) = a_j^(l) * delta_i^(l+1)` <br>
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\backpropagation_algorithm.jpg)     
+先由正向传播算出a^(l)，得到每一层的delta后再进行反向传播算法，`Delta^(l) = Delta^(l) + delta^(l+1) * a^(l).T`<br>
+得到的D_ij^(l)即为grad。<br>
+
+## 8-3 梯度检测
+`dJ(theta)/dtheta ~ (J(theta + epsilon) - J(theta - epsilon)) / (2 * epsilon)`<br>
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\gradient_detection.jpg)     
+
+## 8-4 组合到一起
+Training a neural network:     
+1. Randomly initialize weights     
+2. Implement forward propagation to get h_theta(x^(i)) for any x^(i)    
+3. Implement code to compute cost function J(theta)     
+4. Implement backprop to compute partial derivatives dJ(theta) / dtheta_jk^(l)    
+5. Use gradient descent or advanced optimization method with backpropagation to try to minimize J(theta) as a function of parameter theta
+
+
+
+
+
+
+
 
 
 

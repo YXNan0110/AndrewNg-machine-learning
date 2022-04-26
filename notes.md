@@ -161,6 +161,32 @@ Training a neural network:
 4. Implement backprop to compute partial derivatives dJ(theta) / dtheta_jk^(l)    
 5. Use gradient descent or advanced optimization method with backpropagation to try to minimize J(theta) as a function of parameter theta
 
+## 9-1 模型选择和训练、验证、测试集
+60% training set + 20% cross validation set + 20% test set<br>
+训练集、交叉验证集和测试集，用交叉验证集来选择误差最小的多项式模型
+
+## 9-2 诊断偏差与方差
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\bias_vs_variance.jpg)<br>
+欠拟合：J_train(theta)很大，J_cv(theta)约等于J_train(theta)；过拟合：J_train(theta)很小，J_cv(theta)远大于J_train(theta)。<br>
+
+## 9-3 正则化和偏差、方差
+正则化系数lambda同样可以用cv集来取最优，防止过拟合和欠拟合。<br>
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\bias_regularization.jpg) <br>
+我们可以看到，在lambda过小时，J_train(theta)较小，J_cv(theta)远大于J_train(theta)；在lambda较大时，J_train(theta)和J_cv(theta)都较大。<br>
+
+## 10-1 不对称性分类的误差评估
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\precision_recall.jpg) 
+precision(准确性)：真正阳性病例 / 所有阳性病例<br>
+recall(召回率)：真正阳性病例 / 实际阳性病例<br>
+precision和recall都是越高越好<br>
+权衡精确度和召回率：`F_1 score = 2 * P * R / (P + R)`<br>
+
+## 11-1 优化目标
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\svm_hypothesis.jpg)      
+![](C:\Users\hmtga\Documents\machine_learning\AndrewNg-machine-learning\pics\svm_cost.jpg)      
+cost的下标表示y=1or0<br>
+支持向量机会把不同的样本以最大间隔划线分开<br>
+当c值很大时，支持向量机往往也会把异常值算进来，以达到准确性更高的目的，但这也许会引发过拟合，因此没有必要<br>
 
 
 
